@@ -56,6 +56,7 @@ func OpenNextDevice() (device *Device, err error) {
 // Close communication channel to Blink(1)
 func (b *Device) Close() {
 	_ = b.Device.Close()
+	delete(openDevices, b.Device.Device)
 }
 
 // SetState sets the blink(1) to a specific state
